@@ -40,11 +40,25 @@
       "id": 6
     },
     {
+      "name": "teste",
+      "status": "watching",
+      "genre": "Drama",
+      "comment": "agnaekng",
+      "id": 9
+    },
+    {
+      "name": "Vickins",
+      "status": "watching",
+      "genre": "Ação",
+      "comment": "A gabi não gosta! Frescura...",
+      "id": 10
+    },
+    {
       "name": "",
       "status": "watched",
       "genre": "Comédia",
       "comment": "",
-      "id": 7
+      "id": 11
     }
   ],
   "genres": [

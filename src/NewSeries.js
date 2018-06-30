@@ -47,7 +47,7 @@ class NewSeries extends Component {
                 <section id="intro" className="intro-section container">
                     <h1>Nova série!</h1>
                     <form>
-                        Nome: <input type="text" ref='name' className="form-control" /><br/>
+                        Nome: <input type="text" ref='name' className="form-control" required/><br/>
                         Status: 
                         <select ref='status'>
                             { Object

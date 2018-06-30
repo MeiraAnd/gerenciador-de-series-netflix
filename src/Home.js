@@ -8,8 +8,8 @@ class Home extends Component {
         super(props)
 
         this.state = {
-        genres: [],
-        isLoading: false
+            genres: [],
+            isLoading: false
         };
     }
 
@@ -47,16 +47,17 @@ class Home extends Component {
                     </div>
                 </section>
 
-                <section>
+                <section className="container">
                     {
-                    this.state.isLoading &&
-                    <h2>Aguarde, carregando...</h2>  
+                        this.state.isLoading &&
+                        <h2 className="text-center">Aguarde, carregando...</h2>  
                     }
                     {
+
                     !this.state.isLoading &&
                     
-                    <div>
-                        Ver séris do genêro:
+                    <div className="text-center">
+                        <h2>Ver séries do genêro:</h2>
                         {this.state.genres.map(this.renderGenrelink)}
                     </div>
                     }

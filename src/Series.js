@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
 import api from './Api';
 
+const statuses = {
+    'watched': 'Assistido',
+    'watching': 'Assistindo',
+    'toWatch': 'Assitir'
+}
+
 class Series extends Component {
 
     constructor(props){
         super(props)
 
         this.state = {
-            genres: [],
-            isLoading: false
+            isLoading: false,
+            series: []            
         };
     }
 
     componentDidMount(){
         this.setState({ isLoading: true})
 
-        api.LoadSeriesByGenre(this.props.match.params.genre)
+        api.LoadSeriesByGenre(this.props.match.params.genres)
           .then((res)=> {
             this.setState({
               isLoading: false,
@@ -24,23 +30,26 @@ class Series extends Component {
           });
     }
 
-    renderSeries(){
+    renderSeries(series){
         return(
             <div className="item  col-xs-4 col-lg-4">
                 <div className="thumbnail">
                     <img className="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
                     <div className="caption">
                     <h4 className="group inner list-group-item-heading">
-                        How I met your mother</h4>
+                        {series.name}</h4>
                     <div className="row">
-                        <div className="col-xs-12 col-md-6">
-                        <p className="lead">
-                            AÇÃO</p>
+                        <div className="col-xs-12 col-md-12">
+                        <p className="lead text-center">
+                            {series.genre} / {statuses[series.status]}</p>
                         </div>
-                        <div className="col-xs-12 col-md-6">
-                        <a className="btn btn-success" href="">Gerenciar</a>
-                        </div>
+                        
                     </div>
+                    <div className="row">
+                        <div className="col-xs-12 col-md-12">
+                            <a className="btn btn-success" href="">Gerenciar</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -51,10 +60,13 @@ class Series extends Component {
     render() {
         return (
             <section id="intro" className="intro-section">
-                <h1>Séries {this.props.match.params.genre} </h1>
+                <h1>Séries {this.props.match.params.genres} </h1>
 
                 <div id="series" className="row list-group">
-                
+                    {
+                        !this.state.isLoading &&
+                        this.state.series.map(this.renderSeries)
+                    }
                 </div>
             </section>
            
