@@ -25,10 +25,10 @@ class Home extends Component {
           });
       }
     
-      renderGenrelink(genre){
+      renderGenrelink(genres){
         return(
-            <span key={genre}>
-                <Link to={`/series/${genre}`}>{genre}</Link>
+            <span key={genres}>
+                <Link to={`/series/${genres}`}>{genres}</Link>
             </span>
         );
     }

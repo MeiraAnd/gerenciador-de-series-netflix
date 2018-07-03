@@ -59,6 +59,34 @@
       "genre": "Comédia",
       "comment": "",
       "id": 11
+    },
+    {
+      "name": "",
+      "status": "watched",
+      "genre": "Comédia",
+      "comment": "",
+      "id": 12
+    },
+    {
+      "name": "",
+      "status": "watched",
+      "genre": "Comédia",
+      "comment": "",
+      "id": 13
+    },
+    {
+      "name": "Teste 01",
+      "status": "toWatch",
+      "genre": "Ação",
+      "comment": "Teste 01",
+      "id": 14
+    },
+    {
+      "name": "Teste 02",
+      "status": "watched",
+      "genre": "Ação",
+      "comment": "Teste",
+      "id": 15
     }
   ],
   "genres": [

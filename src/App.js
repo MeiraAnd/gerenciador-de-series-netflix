@@ -40,7 +40,7 @@ class App extends Component {
           </nav>
 
         <Route exact path='/' component={ Home } />
-        <Route path='/series/:genres' component={Series} />
+        <Route path='/series/:genre' component={Series} />
         <Route exact path='/sobre' component={ Sobre } />
         <Route exact path='/nova-serie' component={ NewSeries } />
         

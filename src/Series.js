@@ -21,7 +21,7 @@ class Series extends Component {
     componentDidMount(){
         this.setState({ isLoading: true})
 
-        api.LoadSeriesByGenre(this.props.match.params.genres)
+        api.LoadSeriesByGenre(this.props.match.params.genre)
           .then((res)=> {
             this.setState({
               isLoading: false,
@@ -53,14 +53,14 @@ class Series extends Component {
                     </div>
                 </div>
             </div>
-        )
+        );
 
     }
 
     render() {
         return (
             <section id="intro" className="intro-section">
-                <h1>Séries {this.props.match.params.genres} </h1>
+                <h1>Séries {this.props.match.params.genre} </h1>
 
                 <div id="series" className="row list-group">
                     {
