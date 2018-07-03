@@ -1,92 +1,46 @@
 {
   "series": [
     {
-      "id": 1,
-      "name": "How I met your mother",
-      "status": "watched",
-      "genre": "Comédia",
-      "comments": "Muito bom"
-    },
-    {
-      "id": 2,
-      "name": "Friends",
-      "status": "watching",
-      "genre": "Comédia",
-      "current": {
-        "episode": "01",
-        "season": "09"
-      },
-      "comments": "Bom para descontrair"
-    },
-    {
-      "id": 3,
-      "name": "Breaking Bad",
-      "status": "watched",
-      "genre": "Drama",
-      "comments": "Say My Name - melhor cena"
-    },
-    {
-      "id": 4,
-      "name": "Better Call Saul",
+      "id": 12,
+      "name": "La casa de papel  2",
       "status": "toWatch",
-      "genre": "Drama",
-      "comments": "Galera fala bem"
-    },
-    {
-      "name": "La casa de papel",
-      "status": "watched",
       "genre": "Comédia",
-      "comment": "Oltima",
-      "id": 6
+      "comment": "undefined"
     },
     {
-      "name": "teste",
-      "status": "watching",
-      "genre": "Drama",
-      "comment": "agnaekng",
-      "id": 9
-    },
-    {
-      "name": "Vickins",
-      "status": "watching",
+      "name": "Veloses e Furiosos",
+      "status": "watched",
       "genre": "Ação",
-      "comment": "A gabi não gosta! Frescura...",
-      "id": 10
-    },
-    {
-      "name": "",
-      "status": "watched",
-      "genre": "Comédia",
-      "comment": "",
-      "id": 11
-    },
-    {
-      "name": "",
-      "status": "watched",
-      "genre": "Comédia",
-      "comment": "",
-      "id": 12
-    },
-    {
-      "name": "",
-      "status": "watched",
-      "genre": "Comédia",
-      "comment": "",
+      "comment": "Muitos carros legais!",
       "id": 13
     },
     {
-      "name": "Teste 01",
-      "status": "toWatch",
-      "genre": "Ação",
-      "comment": "Teste 01",
-      "id": 14
+      "id": 14,
+      "name": "Era uma vez",
+      "status": "watching",
+      "genre": "Comédia",
+      "comment": "asgsagag"
     },
     {
-      "name": "Teste 02",
-      "status": "watched",
+      "name": "Gol",
+      "status": "toWatch",
       "genre": "Ação",
-      "comment": "Teste",
+      "comment": "Ok!",
       "id": 15
+    },
+    {
+      "id": 16,
+      "name": "Alice no país das maravilhas!",
+      "status": "watched",
+      "genre": "Comédia",
+      "comment": "undefined"
+    },
+    {
+      "name": "Troa de Elite",
+      "status": "watched",
+      "genre": "Drama",
+      "comment": "Muito parado!",
+      "id": 17
     }
   ],
   "genres": [

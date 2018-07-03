@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import api from './Api';
+import { Link } from 'react-router-dom';
 
 const statuses = {
     'watched': 'Assistido',
@@ -16,38 +17,51 @@ class Series extends Component {
             isLoading: false,
             series: []            
         };
+
+        this.renderSeries = this.renderSeries.bind(this);
+        this.loadData = this.loadData.bind(this);
     }
 
     componentDidMount(){
+        this.loadData()
+    }
+
+    loadData(){
         this.setState({ isLoading: true})
 
         api.LoadSeriesByGenre(this.props.match.params.genre)
-          .then((res)=> {
+            .then((res)=> {
             this.setState({
-              isLoading: false,
-              series: res.data
+                isLoading: false,
+                series: res.data
             })        
-          });
+        });
+    }
+
+    deleteSeries(id){
+        api.deleteSeries(id).then((res)=> this.loadData())
     }
 
     renderSeries(series){
         return(
-            <div className="item  col-xs-4 col-lg-4">
+            <div key={series.id} className="item  col-xs-4 col-lg-4">
                 <div className="thumbnail">
                     <img className="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
                     <div className="caption">
-                    <h4 className="group inner list-group-item-heading">
-                        {series.name}</h4>
-                    <div className="row">
-                        <div className="col-xs-12 col-md-12">
-                        <p className="lead text-center">
-                            {series.genre} / {statuses[series.status]}</p>
+                        <h4 className="group inner list-group-item-heading">
+                            {series.name}
+                        </h4>
+                        <div className="row">
+                            <div className="col-xs-12 col-md-12">
+                                <p className="lead text-center">
+                                    {series.genre} / {statuses[series.status]}
+                                </p>
+                            </div>
                         </div>
-                        
-                    </div>
-                    <div className="row">
-                        <div className="col-xs-12 col-md-12">
-                            <a className="btn btn-success" href="">Gerenciar</a>
+                        <div className="row">
+                            <div className="col-xs-12 col-md-12">
+                                <Link className="btn btn-success pull-left" to={'/series-edit/'+series.id}>Editar</Link>
+                                <a className="btn btn-success pull-right" onClick={() => this.deleteSeries(series.id)}>Excluir</a>
                             </div>
                         </div>
                     </div>
@@ -61,6 +75,14 @@ class Series extends Component {
         return (
             <section id="intro" className="intro-section">
                 <h1>Séries {this.props.match.params.genre} </h1>
+                {
+                    this.state.isLoading &&
+                        <p>Aguarde, carregando...</p>
+                }
+                {
+                    !this.state.isLoading && this.state.series.length === 0 &&
+                    <div className='alert alert-info'>Nenhuma série cadastrada.</div>
+                }
 
                 <div id="series" className="row list-group">
                     {

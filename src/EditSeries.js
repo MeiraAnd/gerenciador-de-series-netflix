@@ -8,14 +8,15 @@ const statuses = {
     'toWatch': 'Assitir'
 }
 
-class NewSeries extends Component {
+class EditSeries extends Component {
     constructor(props){
         super(props)
 
         this.state = {
             genres: [],
             isLoading: false,
-            redirect: false
+            redirect: false,
+            series: {}
         };
 
         this.saveSeries = this.saveSeries.bind(this);
@@ -23,7 +24,17 @@ class NewSeries extends Component {
 
     componentDidMount(){
         this.setState({ isLoading: true})
-    
+        
+        api.loadSeriesById(this.props.match.params.id)
+            .then((res)=>{
+                this.setState({ series: res.data })
+                this.refs.name.value = this.state.series.name,
+                this.refs.genre.value = this.state.series.genre,
+                this.refs.comments.value = this.state.series.comments,
+                this.refs.status.value = this.state.series.status
+                
+            })
+            
         api.loadGenres()
           .then((res)=> {
             this.setState({
@@ -35,13 +46,14 @@ class NewSeries extends Component {
     
     saveSeries(){
         const NewSeries = {
+            id: this.props.match.params.id, 
             name: this.refs.name.value,
             status: this.refs.status.value,
             genre: this.refs.genre.value,
             comment: this.refs.comments.value
         }
 
-        api.saveSeries(NewSeries)
+        api.updateSeries(NewSeries)
             .then((res)=>{
                 this.setState({
                     redirect: '/series/'+this.refs.genre.value
@@ -57,15 +69,14 @@ class NewSeries extends Component {
                     { this.state.redirect &&
                         <Redirect to={this.state.redirect} />
                     }
-                    <h1>Nova série!</h1>
-
+                    <h1>Editar série!</h1>
                     <form>
                         <div className="form-group ">
-                            <input type="text" ref='name' className="form-control" id="name" placeholder="Nome" />
+                            <input type="text" ref='name' className="form-control" id="name" placeholder="Nome" required />
                         </div>
                        
                         <div className="form-group">
-                            <select ref='status' className="form-control" id="status">
+                            <select ref='status' className="form-control" id="status" required>
                                 { Object
                                     .keys(statuses)
                                     .map( key => <option key={key} value={key}>{statuses[key]}</option>)
@@ -82,7 +93,7 @@ class NewSeries extends Component {
                         </div>
 
                         <div className="form-group">
-                            <textarea ref='comments' type="text" className="form-control" id="comments" placeholder="Mensagem"></textarea>
+                            <textarea ref='comments' type="text" className="form-control" rows="3" id="mensagem" placeholder="Mensagem" required></textarea>
                         </div>
                         <button type="button" className="btn btn-default" onClick={this.saveSeries}>Salvar</button>
                     </form>
@@ -92,4 +103,4 @@ class NewSeries extends Component {
     }
 }
 
-export default NewSeries;
+export default EditSeries;

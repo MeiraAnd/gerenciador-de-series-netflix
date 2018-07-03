@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Home from './Home';
 import Series from './Series';
 import NewSeries from './NewSeries';
+import EditSeries from './EditSeries';
 
 const Sobre = () => <section className="intro-section"><h1>Sobre</h1></section>
 
@@ -18,7 +19,7 @@ class App extends Component {
             <div className="container">
               <div className="navbar-header page-scroll">
                 <Link to='/' className="navbar-brand page-scroll">
-                  <img src="images/logo.png" height="30" />
+                  <img src="/images/logo.png" height="30" />
                 </Link>
               </div>
 
@@ -40,6 +41,7 @@ class App extends Component {
           </nav>
 
         <Route exact path='/' component={ Home } />
+        <Route path='/series-edit/:id' component={EditSeries} />
         <Route path='/series/:genre' component={Series} />
         <Route exact path='/sobre' component={ Sobre } />
         <Route exact path='/nova-serie' component={ NewSeries } />
